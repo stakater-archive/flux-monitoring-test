@@ -1,0 +1,22 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: monitoring-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stakater-monitoring
+  template:
+    metadata:
+      labels:
+        app: stakater-monitoring
+    spec:
+    # Used Security Context for Openshift, can remove it for Vanilla Kubernetes
+      securityContext: 
+        runAsUser: 1001520010
+      containers:
+      - name: monitoring-demo
+        image: "stakater/stakaterjavamonitoringdemoapp"
+        ports:
+        - containerPort: 8080

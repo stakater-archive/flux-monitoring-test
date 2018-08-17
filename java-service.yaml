@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    k8sapp: stakater-monitoring
+  name: monitoring-demo
+spec:
+  selector:
+    app: stakater-monitoring
+  ports:
+  - name: web
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
